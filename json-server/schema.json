@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GroceryShopTransaction",
+  "description": "Schema for grocery shop buy and sell transactions",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "item",
+    "category",
+    "quantity",
+    "unit",
+    "unitPrice",
+    "totalPrice",
+    "party",
+    "date",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for transaction"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Buy", "Sell"],
+      "description": "Transaction category: Buy (stock purchase) or Sell (customer sale)"
+    },
+    "item": {
+      "type": "string",
+      "description": "Name of grocery item (e.g., Basmati Rice 5kg)"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Grains & Staples",
+        "Dairy & Eggs",
+        "Fruits & Vegetables",
+        "Beverages",
+        "Oils & Condiments",
+        "Bakery & Snacks",
+        "Meat & Seafood"
+      ],
+      "description": "Product department/category"
+    },
+    "quantity": {
+      "type": "number",
+      "minimum": 0.01,
+      "description": "Quantity purchased or sold"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Measurement unit (kg, bag, bottle, box, packet, etc.)"
+    },
+    "unitPrice": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Price per unit in currency"
+    },
+    "totalPrice": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total amount (quantity * unitPrice)"
+    },
+    "party": {
+      "type": "string",
+      "description": "Customer name (for Sell) or Supplier name (for Buy)"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Transaction date in YYYY-MM-DD"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Completed", "Pending", "Cancelled"],
+      "description": "Payment/order status"
+    }
+  }
+}
